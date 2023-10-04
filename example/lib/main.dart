@@ -71,7 +71,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 InitialsAvatar(name: 'Joe Bloggs', backgroundColor: Colors.pinkAccent,),
                 InitialsAvatar(name: 'Jane Doe', size: 30, textColor: Colors.white,),
                 InitialsAvatar(name: 'John Smith Esq', size: 40, backgroundColor: Colors.blueAccent, textLightenFactor: 90,),
-                InitialsAvatar(name: 'Frodo', size: 50, textLightenFactor: 20,),
+                InitialsAvatar(name: 'Frodo', size: 50, colors: [
+                  Colors.amber,
+                  Colors.cyan,
+                  Colors.brown,
+                  Colors.pinkAccent
+                ],),
               ],
             ),
             Text('Custom scaling'),

@@ -11,7 +11,8 @@ class InitialsAvatar extends StatefulWidget {
     this.textScaleFactor = 1,
     this.textLightenFactor = 40,
     this.backgroundColor,
-    this.textColor
+    this.textColor,
+    this.colors
   });
 
   final String name;
@@ -20,6 +21,7 @@ class InitialsAvatar extends StatefulWidget {
   final int textLightenFactor;
   final Color? backgroundColor;  
   final Color? textColor;  
+  final List<Color>? colors;
 
   @override
   State<InitialsAvatar> createState() => _InitialsAvatarState();
@@ -31,12 +33,14 @@ class _InitialsAvatarState extends State<InitialsAvatar> {
   Widget build(BuildContext context) {    
 
     Color textColor = widget.textColor ?? TinyColor
-      .fromColor(ColorsHelpers.getRandom(widget.name))
+      .fromColor(
+        ColorsHelpers.getRandom(widget.name, widget.colors)
+      )
       .lighten(widget.textLightenFactor)
       .color;
 
     return CircleAvatar(
-      backgroundColor: widget.backgroundColor ?? ColorsHelpers.getRandom(widget.name),
+      backgroundColor: widget.backgroundColor ?? ColorsHelpers.getRandom(widget.name, widget.colors),
       radius: widget.size,
       child: Text(
         Initials.generate(widget.name), 

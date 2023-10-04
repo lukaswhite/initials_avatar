@@ -44,3 +44,14 @@ For example:
 ```dart
 InitialsAvatar(name: 'Jane Doe', textLightenFactor: 90,),
 ```
+
+The background colour is generated from a built-in selection of colours, but you're free to provide your own:
+
+```dart
+InitialsAvatar(name: 'Jane Doe', colors: [
+    Colors.amber,
+    Colors.cyan,
+    Colors.brown,
+    Colors.pinkAccent
+],),
+```

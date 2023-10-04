@@ -1,9 +1,9 @@
 import 'dart:ui';
 
 class ColorsHelpers {
-  static Color getRandom(String name)
+  static Color getRandom(String name, List<Color>? colors)
   {
-    List<Color> colors = [
+    List<Color> defaults = [
       const Color.fromARGB(255, 244, 67, 54),
       const Color.fromARGB(255, 255, 64, 129),
       const Color.fromARGB(255, 156, 39, 176),
@@ -24,6 +24,8 @@ class ColorsHelpers {
       const Color.fromARGB(255, 96, 125, 139),
     ];
 
-    return colors[name.length % colors.length];
+    return colors != null ?
+      colors[name.length % colors.length] :
+      defaults[name.length % defaults.length];
   }
 }
