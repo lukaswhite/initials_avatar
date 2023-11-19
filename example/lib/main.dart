@@ -7,8 +7,7 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-  // This widget is the root of your application.
+  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -25,15 +24,6 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
   final String title;
 
   @override
@@ -49,11 +39,13 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,        
         title: Text(widget.title),
       ),
-      body: const Center(        
+      body: const SingleChildScrollView(
+        child: Center(        
         child: Column(          
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
+            SizedBox(height: 20,),
             Text('Sizing'),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -64,13 +56,27 @@ class _MyHomePageState extends State<MyHomePage> {
                 InitialsAvatar(name: 'Frodo', size: 50,),
               ],
             ),
-            Text('Custom colors'),
+            Divider(),
+            SizedBox(height: 20,),
+            Text('Square / border radius'),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                InitialsAvatar(name: 'Joe Bloggs', shape: InitialsAvatarShape.square,),
+                InitialsAvatar(name: 'Jane Doe', shape: InitialsAvatarShape.square, size: 30, borderRadius: 10.0,),
+                InitialsAvatar(name: 'John Smith Esq', shape: InitialsAvatarShape.square, size: 40, borderRadius: 20.0,),
+                InitialsAvatar(name: 'Frodo', shape: InitialsAvatarShape.square, size: 50, borderRadius: 30.0,),
+              ],
+            ),
+            Divider(),
+            SizedBox(height: 20,),
+            Text('Custom colors'),            
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 InitialsAvatar(name: 'Joe Bloggs', backgroundColor: Colors.pinkAccent,),
                 InitialsAvatar(name: 'Jane Doe', size: 30, textColor: Colors.white,),
-                InitialsAvatar(name: 'John Smith Esq', size: 40, backgroundColor: Colors.blueAccent, textLightenFactor: 90,),
+                InitialsAvatar(name: 'John Smith Esq', size: 40, backgroundColor: Colors.blueAccent, textContrastFactor: 90,),
                 InitialsAvatar(name: 'Frodo', size: 50, colors: [
                   Colors.amber,
                   Colors.cyan,
@@ -79,6 +85,25 @@ class _MyHomePageState extends State<MyHomePage> {
                 ],),
               ],
             ),
+            Divider(),
+            SizedBox(height: 20,),
+            Text('Darken'),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                InitialsAvatar(name: 'Joe Bloggs', backgroundColor: Colors.pinkAccent, textMode: InitialsAvatarTextMode.darken, textContrastFactor: 30,),
+                InitialsAvatar(name: 'Jane Doe', size: 30, textMode: InitialsAvatarTextMode.darken, textContrastFactor: 20,),
+                InitialsAvatar(name: 'John Smith Esq', size: 40, backgroundColor: Colors.blueAccent, textMode: InitialsAvatarTextMode.darken, textContrastFactor: 30,),
+                InitialsAvatar(name: 'Frodo', size: 50, colors: [
+                  Colors.amber,
+                  Colors.cyan,
+                  Colors.brown,
+                  Colors.pinkAccent
+                ], textMode: InitialsAvatarTextMode.darken, textContrastFactor: 40,),
+              ],
+            ),
+            Divider(),
+            SizedBox(height: 20,),
             Text('Custom scaling'),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -91,7 +116,7 @@ class _MyHomePageState extends State<MyHomePage> {
             )            
           ],
         ),
-      )// This trailing comma makes auto-formatting nicer for build methods.
-    );
+      ),
+    ));
   }
 }

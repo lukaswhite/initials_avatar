@@ -37,12 +37,18 @@ Provide your own text colour:
 InitialsAvatar(name: 'Jane Doe', textColor: Colors.white,),
 ```
 
-The colour of the text is derived from the background colour, by lightening it. You can change the degree to which it does so using the `textLightenFactor` parameter, which is a value between 0 and 100 (which will always be white).
+The colour of the text is derived from the background colour, by lightening it by default. You can change the degree to which it does so using the `textContrastFactor` parameter, which is a value between 0 and 100 (which will always be white).
 
 For example:
 
 ```dart
-InitialsAvatar(name: 'Jane Doe', textLightenFactor: 90,),
+InitialsAvatar(name: 'Jane Doe', textContrastFactor: 90,),
+```
+
+If you'd prefer to use a darker variant, set the `textMode`:
+
+```dart
+InitialsAvatar(name: 'Jane Doe', textMode: InitialsAvatarTextMode.darken,),
 ```
 
 The background colour is generated from a built-in selection of colours, but you're free to provide your own:
